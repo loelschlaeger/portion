@@ -1,14 +1,18 @@
 Package: portion
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Extracting a Data Portion
+Version: 0.0.0.9000
+Author: Lennart Oelschläger
+Maintainer: Lennart Oelschläger <oelschlaeger.lennart@gmail.com>
+Description: Extracting a data portion.
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
 Imports: 
     stats
+URL: https://github.com/loelschlaeger/portion
+BugReports: https://github.com/loelschlaeger/portion/issues
