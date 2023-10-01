@@ -8,20 +8,18 @@
 \alias{portion.list}
 \title{Extracting a data portion}
 \usage{
-portion(x, ...)
+portion(x, proportion, how, ...)
 
-portion.numeric(x, ...)
+portion.numeric(x, proportion, how, ...)
 
-portion.matrix(x, ...)
+portion.matrix(x, proportion, how, byrow, ignore, cluster, ...)
 
-portion.data.frame(x, ...)
+portion.data.frame(x, proportion, how, byrow, ignore, cluster, ...)
 
-portion.list()
+portion.list(x, proportion, how, ...)
 }
 \arguments{
 \item{x}{an object to be portioned}
-
-\item{...}{further arguments to be passed to or from other methods}
 
 \item{proportion}{a \code{numeric} between 0 and 1, the relative portion size}
 
@@ -31,6 +29,8 @@ portion.list()
 - \code{"last"}, portion to the last elements
 - \code{"similar"}, portion to similar elements based on clustering
 - \code{"dissimilar"}, portion to dissimilar elements based on clustering}
+
+\item{...}{further arguments to be passed to or from other methods}
 
 \item{byrow}{\code{TRUE} to portion row-wise or \code{FALSE} to portion column-wise}
 

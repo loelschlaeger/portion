@@ -4,8 +4,16 @@
 \name{portion-package}
 \alias{portion-package}
 \alias{_PACKAGE}
-\title{portion: What the Package Does (Title Case)}
+\title{portion: Extracting a Data Portion}
 \description{
-More about what it does (maybe more than one line) Use four spaces when indenting paragraphs within the Description.
+Extracting a data portion.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/loelschlaeger/portion}
+  \item Report bugs at \url{https://github.com/loelschlaeger/portion/issues}
+}
+
 }
 \keyword{internal}

@@ -39,34 +39,34 @@
 #'
 #' @export
 
-portion <- function(x, ...) {
+portion <- function(x, proportion, how, ...) {
 
 }
 
 #' @export
 #' @rdname portion
 
-portion.numeric <- function(x, ...) {
+portion.numeric <- function(x, proportion, how, ...) {
 
 }
 
 #' @export
 #' @rdname portion
 
-portion.matrix <- function(x, ...) {
+portion.matrix <- function(x, proportion, how, byrow, ignore, cluster, ...) {
 
 }
 
 #' @export
 #' @rdname portion
 
-portion.data.frame <- function(x, ...) {
+portion.data.frame <- function(x, proportion, how, byrow, ignore, cluster, ...) {
 
 }
 
 #' @export
 #' @rdname portion
 
-portion.list <- function() {
+portion.list <- function(x, proportion, how, ...) {
 
 }
