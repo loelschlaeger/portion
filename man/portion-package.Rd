@@ -6,6 +6,8 @@
 \alias{_PACKAGE}
 \title{portion: Extracting a Data Portion}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Extracting a data portion.
 }
 \seealso{
@@ -14,6 +16,10 @@ Useful links:
   \item \url{https://github.com/loelschlaeger/portion}
   \item Report bugs at \url{https://github.com/loelschlaeger/portion/issues}
 }
+
+}
+\author{
+\strong{Maintainer}: Lennart Oelschläger \email{oelschlaeger.lennart@gmail.com}
 
 }
 \keyword{internal}
