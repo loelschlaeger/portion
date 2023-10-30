@@ -1,13 +1,14 @@
 Package: portion
 Type: Package
 Title: Extracting a Data Portion
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
     person("Lennart", "Oelschl\u00e4ger", 
            email = "oelschlaeger.lennart@gmail.com", 
            role = c("aut", "cre"))
            )
-Description: Extracting a data portion.
+Description: Provides a simple method to extract portions of a vector, matrix, or data.frame. 
+    The relative portion size and the way the portion is selected can be chosen.
 License: GPL (>= 3)
 Encoding: UTF-8
 RoxygenNote: 7.2.3

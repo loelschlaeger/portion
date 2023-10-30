@@ -8,15 +8,15 @@
 \alias{portion.list}
 \title{Extracting a data portion}
 \usage{
-portion(x, proportion, how, ...)
+portion(x, proportion, how, centers = 2, ...)
 
-portion.numeric(x, proportion, how, ...)
+\method{portion}{numeric}(x, proportion, how, centers = 2, ...)
 
-portion.matrix(x, proportion, how, byrow, ignore, cluster, ...)
+\method{portion}{matrix}(x, proportion, how, centers = 2, byrow = TRUE, ignore = integer(), ...)
 
-portion.data.frame(x, proportion, how, byrow, ignore, cluster, ...)
+\method{portion}{data.frame}(x, proportion, how, centers = 2, byrow = TRUE, ignore = integer(), ...)
 
-portion.list(x, proportion, how, ...)
+\method{portion}{list}(x, proportion, how, centers = 2, ...)
 }
 \arguments{
 \item{x}{an object to be portioned}
@@ -30,22 +30,39 @@ portion.list(x, proportion, how, ...)
 - \code{"similar"}, portion to similar elements based on clustering
 - \code{"dissimilar"}, portion to dissimilar elements based on clustering}
 
+\item{centers}{(only relevant if \code{how} is \code{"similar} or \code{"dissimilar)})
+an \code{integer} (default is \code{2}), passed on to
+\code{\link[stats]{kmeans}}}
+
 \item{...}{further arguments to be passed to or from other methods}
 
-\item{byrow}{\code{TRUE} to portion row-wise or \code{FALSE} to portion column-wise}
+\item{byrow}{\code{TRUE} to portion row-wise (default) or \code{FALSE} to portion
+column-wise}
 
-\item{ignore}{(relevant if \code{how} is \code{"similar} or \code{"dissimilar)})
+\item{ignore}{(only relevant if \code{how} is \code{"similar} or \code{"dissimilar)})
 an \code{integer} vector of row indices (or column indices if
 \code{byrow = FALSE}) to ignore during clustering}
-
-\item{cluster}{(relevant if \code{how} is \code{"similar} or \code{"dissimilar)})
-passed on to \code{\link[stats]{kmeans}}}
 }
 \value{
-the portioned input \code{x} with the (row, column, ...) indices used
+the portioned input \code{x} with the (row, column) indices used
 added as attributes \code{"indices"}
 }
 \description{
 extract a portion of data saved as a \code{vector}, \code{matrix},
 \code{data.frame}, or \code{list}
+}
+\examples{
+# can portion vectors, matrices, data.frames, and lists of such types
+portion(
+  list(
+    1:10,
+    matrix(LETTERS[1:12], nrow = 3, ncol = 4),
+    data.frame(a = 1:6, b = -6:-1)
+  ),
+  proportion = 0.5,
+  how = "first"
+)
+
+# can portion similar elements
+portion(c(rep(1, 5), rep(2, 5)), proportion = 0.5, how = "similar")
 }

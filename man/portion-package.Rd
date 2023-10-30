@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Extracting a data portion.
+Provides a simple method to extract portions of a vector, matrix, or data.frame. The relative portion size and the way the portion is selected can be chosen.
 }
 \seealso{
 Useful links:

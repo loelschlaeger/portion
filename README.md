@@ -10,8 +10,17 @@
 status](https://www.r-pkg.org/badges/version/portion)](https://CRAN.R-project.org/package=portion)
 <!-- badges: end -->
 
-`{portion}` is a small R package that allows for extracting a data
-portion.
+`{portion}` is a small `R` package that allows for extracting a data
+portion:
+
+1.  works for `vector`, `matrix`, `data.frame`, and `list` objects
+
+2.  the relative portion size can be selected
+
+3.  different ways to select the portion (first or last data points,
+    random, similar or dissimilar elements)
+
+4.  can portion row- and column-wise
 
 ## Installation
 
@@ -25,30 +34,76 @@ devtools::install_github("loelschlaeger/portion")
 
 ## Example
 
-We can work on a vector:
+Can work on a `vector`:
 
 ``` r
-portion(1:5, proportion = 0.5)
-#> NULL
+portion(c(1:5, 51:55), proportion = 0.5, how = "similar")
+#> [1] 51 52 53 54 55
+#> attr(,"indices")
+#> [1]  6  7  8  9 10
+portion(1:10, proportion = 0.4, how = "dissimilar", centers = 4)
+#> [1] 1 3 5 8
+#> attr(,"indices")
+#> [1] 1 3 5 8
 ```
 
-We can work on a matrix:
+Can work on a `matrix`:
 
 ``` r
-portion(diag(3), proportion = 0.5)
-#> NULL
+portion(matrix(LETTERS[1:24], nrow = 4), proportion = 0.5, how = "first")
+#>      [,1] [,2] [,3] [,4] [,5] [,6]
+#> [1,] "A"  "E"  "I"  "M"  "Q"  "U" 
+#> [2,] "B"  "F"  "J"  "N"  "R"  "V" 
+#> attr(,"indices")
+#> [1] 1 2
+portion(matrix(LETTERS[1:24], nrow = 4), proportion = 0.5, how = "first", byrow = FALSE)
+#>      [,1] [,2] [,3]
+#> [1,] "A"  "E"  "I" 
+#> [2,] "B"  "F"  "J" 
+#> [3,] "C"  "G"  "K" 
+#> [4,] "D"  "H"  "L" 
+#> attr(,"indices")
+#> [1] 1 2 3
 ```
 
-We can work on a data frame:
+Can work on a `data.frame`:
 
 ``` r
-portion(data.frame(1:3, 2:4), proportion = 0.5)
-#> NULL
+portion(as.data.frame(diag(8)), proportion = 0.3, how = "random")
+#>   V1 V2 V3 V4 V5 V6 V7 V8
+#> 2  0  1  0  0  0  0  0  0
+#> 3  0  0  1  0  0  0  0  0
+#> 4  0  0  0  1  0  0  0  0
+portion(as.data.frame(diag(8)), proportion = 0.3, how = "random", byrow = FALSE)
+#>   V2 V6 V8
+#> 1  0  0  0
+#> 2  1  0  0
+#> 3  0  0  0
+#> 4  0  0  0
+#> 5  0  0  0
+#> 6  0  1  0
+#> 7  0  0  0
+#> 8  0  0  1
 ```
 
-We can work on a list:
+Can work on a `list`:
 
 ``` r
-portion(list(1:5, diag(3), data.frame(1:3, 2:4)), proportion = 0.5)
-#> NULL
+portion(list(1:5, diag(3), data.frame(1:3, 2:4)), proportion = 0.5, how = "last")
+#> [[1]]
+#> [1] 3 4 5
+#> attr(,"indices")
+#> [1] 3 4 5
+#> 
+#> [[2]]
+#>      [,1] [,2] [,3]
+#> [1,]    0    1    0
+#> [2,]    0    0    1
+#> attr(,"indices")
+#> [1] 2 3
+#> 
+#> [[3]]
+#>   X1.3 X2.4
+#> 2    2    3
+#> 3    3    4
 ```
