@@ -10,22 +10,24 @@
 status](https://www.r-pkg.org/badges/version/portion)](https://CRAN.R-project.org/package=portion)
 <!-- badges: end -->
 
-`{portion}` is a small `R` package that allows for extracting a data
-portion:
+`{portion}` is a small `R` package that helps to extract a data portion:
 
 1.  works for `vector`, `matrix`, `data.frame`, and `list` objects
 
 2.  the relative portion size can be selected
 
-3.  different ways to select the portion (first or last data points,
-    random, similar or dissimilar elements)
+3.  allows to select first, last, random, similar or dissimilar data
+    points
 
-4.  can portion row- and column-wise
+4.  can portion either row- or column-wise
 
 ## Installation
 
-You can install the development version of portion from
-[GitHub](https://github.com/) with:
+``` r
+install.packages("portion")
+```
+
+And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -34,7 +36,7 @@ devtools::install_github("loelschlaeger/portion")
 
 ## Example
 
-Can work on a `vector`:
+Can portion a `vector`:
 
 ``` r
 portion(c(1:5, 51:55), proportion = 0.5, how = "similar")
@@ -42,12 +44,12 @@ portion(c(1:5, 51:55), proportion = 0.5, how = "similar")
 #> attr(,"indices")
 #> [1]  6  7  8  9 10
 portion(1:10, proportion = 0.4, how = "dissimilar", centers = 4)
-#> [1] 1 3 5 8
+#> [1] 1 4 6 8
 #> attr(,"indices")
-#> [1] 1 3 5 8
+#> [1] 1 4 6 8
 ```
 
-Can work on a `matrix`:
+Can portion a `matrix`:
 
 ``` r
 portion(matrix(LETTERS[1:24], nrow = 4), proportion = 0.5, how = "first")
@@ -66,24 +68,24 @@ portion(matrix(LETTERS[1:24], nrow = 4), proportion = 0.5, how = "first", byrow 
 #> [1] 1 2 3
 ```
 
-Can work on a `data.frame`:
+Can portion a `data.frame`:
 
 ``` r
 portion(as.data.frame(diag(8)), proportion = 0.3, how = "random")
 #>   V1 V2 V3 V4 V5 V6 V7 V8
 #> 2  0  1  0  0  0  0  0  0
 #> 3  0  0  1  0  0  0  0  0
-#> 4  0  0  0  1  0  0  0  0
+#> 8  0  0  0  0  0  0  0  1
 portion(as.data.frame(diag(8)), proportion = 0.3, how = "random", byrow = FALSE)
-#>   V2 V6 V8
-#> 1  0  0  0
-#> 2  1  0  0
+#>   V1 V6 V7
+#> 1  1  0  0
+#> 2  0  0  0
 #> 3  0  0  0
 #> 4  0  0  0
 #> 5  0  0  0
 #> 6  0  1  0
-#> 7  0  0  0
-#> 8  0  0  1
+#> 7  0  0  1
+#> 8  0  0  0
 ```
 
 Can work on a `list`:
