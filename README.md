@@ -25,15 +25,11 @@ coverage](https://codecov.io/gh/loelschlaeger/portion/branch/master/graph/badge.
 
 ## Installation
 
+You can install the released version from
+[CRAN](https://CRAN.R-project.org) with:
+
 ``` r
 install.packages("portion")
-```
-
-And the development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("loelschlaeger/portion")
 ```
 
 ## Example
@@ -42,13 +38,13 @@ Can portion a `vector`:
 
 ``` r
 portion(c(1:5, 51:55), proportion = 0.5, how = "similar")
-#> [1] 1 2 3 4 5
+#> [1] 51 52 53 54 55
 #> attr(,"indices")
-#> [1] 1 2 3 4 5
+#> [1]  6  7  8  9 10
 portion(1:10, proportion = 0.4, how = "dissimilar", centers = 4)
-#> [1] 1 3 5 8
+#> [1]  1  5  8 10
 #> attr(,"indices")
-#> [1] 1 3 5 8
+#> [1]  1  5  8 10
 ```
 
 Can portion a `matrix`:
@@ -76,18 +72,18 @@ Can portion a `data.frame`:
 portion(as.data.frame(diag(8)), proportion = 0.3, how = "random")
 #>   V1 V2 V3 V4 V5 V6 V7 V8
 #> 3  0  0  1  0  0  0  0  0
-#> 4  0  0  0  1  0  0  0  0
 #> 5  0  0  0  0  1  0  0  0
+#> 6  0  0  0  0  0  1  0  0
 portion(as.data.frame(diag(8)), proportion = 0.3, how = "random", byrow = FALSE)
-#>   V2 V4 V8
-#> 1  0  0  0
-#> 2  1  0  0
+#>   V1 V2 V5
+#> 1  1  0  0
+#> 2  0  1  0
 #> 3  0  0  0
-#> 4  0  1  0
-#> 5  0  0  0
+#> 4  0  0  0
+#> 5  0  0  1
 #> 6  0  0  0
 #> 7  0  0  0
-#> 8  0  0  1
+#> 8  0  0  0
 ```
 
 Can work on a `list`:
