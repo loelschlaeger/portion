@@ -30,6 +30,8 @@ The `{portion}` `R` package offers convenient tools to extract data portions fro
 
 5. provides selected indices as an attribute
 
+6. preserves object attributes
+
 ## Installation
 
 You can install the released version from [CRAN](https://CRAN.R-project.org) with:
@@ -43,9 +45,9 @@ install.packages("portion")
 Can portion a `vector`:
 
 ```{r, vector example}
-x <- c(1:4, 16:20)
+x <- c(1, 1, 2, 2)
 portion(x, proportion = 0.5, how = "similar")
-portion(x, proportion = 0.4, how = "dissimilar")
+portion(x, proportion = 0.5, how = "dissimilar")
 ```
 
 Can portion a `matrix`:
