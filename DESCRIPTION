@@ -1,7 +1,7 @@
 Package: portion
 Type: Package
 Title: Extracting a Data Portion
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: person("Lennart", "Oelschl\u00e4ger", email = "oelschlaeger.lennart@gmail.com", role = c("aut", "cre"))
 Description: Provides simple methods to extract data portions from various objects. 
     The relative portion size and the way the portion is selected can be chosen.
