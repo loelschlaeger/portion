@@ -21,7 +21,7 @@ library("portion")
 The `{portion}` `R` package offers convenient tools to extract data portions
 from common R objects:
 
-1. works for `vector`, `matrix`, `data.frame`, and `list` objects
+1. works for `vector`, `matrix`, `data.frame`, `ts`, and `list` objects
 
 2. the relative portion size can be selected
 
@@ -43,7 +43,8 @@ install.packages("portion")
 
 ## Examples
 
-Portion a `vector` by selecting similar or dissimilar values:
+Portion a `vector` by selecting similar or dissimilar values based on
+clustering via `stats::kmeans()`:
 
 ```{r, vector example}
 set.seed(1)
@@ -79,9 +80,15 @@ x <- data.frame(value = c(1, 1, 5, 5), group = c("a", "a", "b", "b"))
 portion(x, proportion = 0.5, how = "similar", ignore = 2)
 ```
 
+Portion a time series (class `ts`):
+
+```{r, ts example}
+portion(ts(1:8, start = 2000), proportion = 0.5, how = "last")
+```
+
 Portion each element of a `list`:
 
 ```{r, list example}
-x <- list(1:5, diag(3), data.frame(1:3, 2:4))
+x <- list(1:5, diag(3), data.frame(a = 1:3, b = 2:4))
 portion(x, proportion = 0.5, how = "last")
 ```
